@@ -27,7 +27,13 @@ function App() {
   }, [guess, yellowChars, blockedChars])
 
   useEffect(() => {
-    setGuess([guess0 || ' ', guess1 || ' ', guess2 || ' ', guess3 || ' ', guess4 || ' '].join(''))
+    setGuess([
+      guess0.toLowerCase() || ' ',
+      guess1.toLowerCase() || ' ',
+      guess2.toLowerCase() || ' ',
+      guess3.toLowerCase() || ' ',
+      guess4.toLowerCase() || ' '
+    ].join(''))
   }, [guess0, guess1, guess2, guess3, guess4])
 
   const onKeyUp = idx => e => {

@@ -3,7 +3,6 @@ import strainLetters from './strainLetters'
 
 const calculateSolutions = (guess, chars, blocked) => {
   const solutions = []
-  console.log(`guess -------->>>>>>>>`, guess)
 
   const greenLettersConflict = word => {
     for (let i = 0; i < guess.length; i++) {
