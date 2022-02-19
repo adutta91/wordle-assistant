@@ -1,38 +1,46 @@
 import words from '../assets/wordle-words.json'
 import strainLetters from './strainLetters'
 
-const calculateSolutions = (guess, chars, blocked) => {
-  const solutions = []
+const calculateSolutions = (guesses) => {
+  if (!guesses.length) return []
+  const validateGreenLetter = (word, guess, idx) => word[idx] === guess[idx]
 
-  const greenLettersConflict = word => {
-    for (let i = 0; i < guess.length; i++) {
-      const char = guess[i]
-      if (char !== " " && word[i] !== char) {
-        return true
-      }
-    }
+  const validateYellowLetter = (word, guess, idx) => word.includes(guess[idx]) && word[idx] !== guess[idx]
 
-    return false
+  const validateBlackLetter = (word, guess, idx) => {
+    const allowedLetters = guess.charDispositions.map((color, i) => {
+      return ["green", "yellow"].includes(color) ? guess.letters[i] : ""
+    }).filter(Boolean)
+
+    return !word.includes(guess.letters[idx]) || allowedLetters.includes(guess.letters[idx])
   }
 
-  const missingYellowLetters = word => !strainLetters(chars).every(char => word.includes(char))
-  const containsBlockedLetters = word => strainLetters(blocked).some(char => word.includes(char))
+  // green letters
+  return words.filter(word => {
+    let valid = true
 
-  const isPossibleSolution = word => {
-    if (greenLettersConflict(word) || missingYellowLetters(word) || containsBlockedLetters(word)) {
-      return false
-    }
+    guesses.forEach(guess => {
+      const letters = guess.letters.toLowerCase()
 
-    return true
-  }
+      guess.charDispositions.forEach((color, idx) => {
+        switch(color) {
+          case "green":
+            valid = valid && validateGreenLetter(word, letters, idx)
+            break;
+          case "black":
+            valid = valid && validateBlackLetter(word, guess, idx)
+            break;
+          case "yellow":
+            valid = valid && validateYellowLetter(word, letters, idx)
+            break;
+          default:
+            break;
+        }
+      })
+    })
 
-  words.forEach(word => {
-    if (isPossibleSolution(word)) {
-      solutions.push(word)
-    }
+    return valid
   })
-  
-  return solutions
 }
 
 export default calculateSolutions

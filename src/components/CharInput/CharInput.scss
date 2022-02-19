@@ -1,0 +1,32 @@
+
+.char-input-wrapper {
+  display: inline-block;
+  cursor: pointer;
+}
+
+.char-input {
+  border: 1px solid black;
+  height: 50px;
+  margin: 20px;
+  padding: 10px;
+  min-width: 50px;
+  border-radius: 5px;
+  pointer-events: none;
+
+  > input {
+    text-align: center;
+    pointer-events: none;
+  }
+
+  &.black {
+    background: #f4f4f4;
+  }
+
+  &.green {
+    background: #6ae168;
+  }
+  
+  &.yellow {
+    background: #fdff7e;
+  }
+}
