@@ -1,5 +1,4 @@
 import words from '../assets/wordle-words.json'
-import strainLetters from './strainLetters'
 
 const calculateSolutions = (guesses) => {
   if (!guesses.length) return []

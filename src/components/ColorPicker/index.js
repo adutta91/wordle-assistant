@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import { Dialog, Grid, Box } from '@mui/material';
+import { Dialog, Box } from '@mui/material';
 import './ColorPicker.scss';
 
 const colorOptions = [

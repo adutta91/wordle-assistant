@@ -1,5 +1,5 @@
 import './App.scss';
-import { Container, AppBar, Toolbar, Box, Chip } from '@mui/material';
+import { Container, AppBar, Toolbar, Box } from '@mui/material';
 import { useState, useEffect } from 'react'
 import Guess from './components/Guess'
 import Solutions from './components/Solutions'

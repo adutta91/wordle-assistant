@@ -40,6 +40,7 @@ function Guess({ guess, onChange, prev, idx }) {
 
   useEffect(() => {
     charRefs[0].current.focus()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   useEffect(() => {
