@@ -5,12 +5,12 @@
 }
 
 .char-input {
-  border: 1px solid black;
-  height: 50px;
-  margin: 20px;
-  padding: 10px;
-  min-width: 50px;
   border-radius: 5px;
+  border: 1px solid black;
+  height: 35px;
+  margin: 10px;
+  min-width: 35px;
+  padding: 10px;
   pointer-events: none;
 
   > input {
